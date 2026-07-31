@@ -1,6 +1,8 @@
 # Smart-room-V2
 I have since around 1 year done a smart room, where i made a custom pcb, and salvaged some parts from an old laptop motherboard to be able to control the LED strip that i have and also open and close my curtain, but that was all my thing could do, this time, im planning on making my pcb using jlcpcb instead of for better quality, and im planning on adding a lot more features, such as a screen, CAD and sensor and this stuff.
 
+Note: The Firmware is currently only a test rn, i will upload a working code, once i make this work.
+
 If you are interested, you can check out my V1 of this, with diy pcb: https://github.com/MohamadAminGhanoum/Smart-home
 
 
