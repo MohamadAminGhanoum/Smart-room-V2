@@ -18,7 +18,8 @@ If you are interested, you can check out my V1 of this, with diy pcb: https://gi
 ## Fully assembled CAD:
 
 <img width="478" height="545" alt="Screenshot 2026-07-27 171327" src="https://github.com/user-attachments/assets/29272f32-5bf3-400f-9794-db4a60014eb1" />
-<img width="538" height="559" alt="Screenshot 2026-07-27 171243" src="https://github.com/user-attachments/assets/db11035f-c0b2-4fa4-802c-ffa4b34b3a44" />
+
+<img width="426" height="519" alt="Screenshot 2026-07-27 171301" src="https://github.com/user-attachments/assets/d523b5f2-d103-460c-8478-f0a02e691f5b" />
 
 
 
