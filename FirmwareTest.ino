@@ -5,27 +5,27 @@
 #include <Adafruit_SHT4x.h>
 #include <GxEPD2_BW.h>
 
-#define PIN_LED_PWM       1   // MOSFET Gate
-#define PIN_POTENTIOMETER 2   // ADC Input (10k Pot)
+#define PIN_LED_PWM       1  
+#define PIN_POTENTIOMETER 2  
 
-#define PIN_RTC_SDA       4   // I2C Bus 1 (RTC)
+#define PIN_RTC_SDA       4  
 #define PIN_RTC_SCL       5
 
-#define PIN_EPD_BUSY      7   // SPI E-Ink Display
+#define PIN_EPD_BUSY      7   
 #define PIN_EPD_RST       8
 #define PIN_EPD_DC        9
 #define PIN_EPD_CS        10
 #define PIN_EPD_MOSI      11
 #define PIN_EPD_SCK       12
 
-#define PIN_SHT_SDA       13  // I2C Bus 2 (SHT40)
+#define PIN_SHT_SDA       13  
 #define PIN_SHT_SCL       14
 
-#define PIN_MOTOR_INA     15  // AM4659 Motor Control A
-#define PIN_MOTOR_INB     16  // AM4659 Motor Control B
+#define PIN_MOTOR_INA     15  
+#define PIN_MOTOR_INB     16 
 
-#define PIN_BTN_OPEN      17  // Button 1 (Active-LOW)
-#define PIN_BTN_CLOSE     18  // Button 2 (Active-LOW)
+#define PIN_BTN_OPEN      17  
+#define PIN_BTN_CLOSE     18  
 
 TwoWire I2C_RTC = TwoWire(0);
 TwoWire I2C_SHT = TwoWire(1);
@@ -33,11 +33,11 @@ TwoWire I2C_SHT = TwoWire(1);
 RTC_DS3231 rtc;
 Adafruit_SHT4x sht40 = Adafruit_SHT4x();
 
-const int PWM_FREQ = 5000;       // 5 kHz PWM
-const int PWM_RESOLUTION = 10;   // 10-bit resolution (0 - 1023)
+const int PWM_FREQ = 5000;      
+const int PWM_RESOLUTION = 10;  
 
 unsigned long lastSensorRead = 0;
-const unsigned long SENSOR_INTERVAL = 5000; // Read sensors every 5 seconds
+const unsigned long SENSOR_INTERVAL = 5000;
 
 enum MotorState { STOPPED, OPENING, CLOSING };
 MotorState currentMotorState = STOPPED;
@@ -65,7 +65,7 @@ void closeCurtain() {
 
 void updateLEDBrightness() {
   static int smoothedADC = 0;
-  int rawADC = analogRead(PIN_POTENTIOMETER); // 0 to 4095
+  int rawADC = analogRead(PIN_POTENTIOMETER);
 
   smoothedADC = (smoothedADC * 7 + rawADC) / 8;
 
@@ -82,12 +82,11 @@ void handleButtons() {
 
   if (openPressed && currentMotorState != OPENING) {
     openCurtain();
-    delay(200); // Simple debounce
+    delay(200); 
   } else if (closePressed && currentMotorState != CLOSING) {
     closeCurtain();
-    delay(200); // Simple debounce
+    delay(200); 
   } else if (!openPressed && !closePressed && currentMotorState != STOPPED) {
-    // Stop motor if no button is pressed
     stopMotor();
   }
 }
@@ -114,7 +113,7 @@ void setup() {
   } else {
     Serial.println("DS3231 RTC Initialized.");
     if (rtc.lostPower()) {
-      rtc.adjust(DateTime(F(__DATE__), F(__TIME__))); // Set to compile time
+      rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
     }
   }
 
@@ -130,7 +129,6 @@ void setup() {
 }
 
 void loop() {
-  // 1. Continuous smooth LED dimming from Potentiometer
   updateLEDBrightness();
 
   handleButtons();
